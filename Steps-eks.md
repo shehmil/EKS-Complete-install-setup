@@ -220,4 +220,7 @@ helm install aws-load-balancer-controller eks/aws-load-balancer-controller \
 Verify that the deployments are running.
 
 kubectl get deployment -n kube-system aws-load-balancer-controller
+
+eksctl delete cluster --name my-cluster --region us-west-2
+
  for reference youtube video -->   https://www.youtube.com/watch?v=RRCrY12VY_s
