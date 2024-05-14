@@ -178,17 +178,16 @@ create namespace game-2048
 Deploy the deployment, service and Ingress --> kubectl apply -f https://raw.githubusercontent.com/kubernetes-sigs/aws-load-balancer-controller/v2.5.4/docs/examples/2048/2048_full.yaml
 now ALB controller requirde -> for configure-oidc-connectorrequirde (if kubernetcluster need to connect service like LB oidc requirde same like iam adding ec2)
    ->    eksctl utils associate-iam-oidc-provider --cluster $cluster_name --approve
-setup alb add on policy (alb controller need to talk with loadbalancer.)
+        
+        setup alb add on policy (alb controller need to talk with loadbalancer.)
+        --> curl -O https://raw.githubusercontent.com/kubernetes-sigs/aws-load-balancer-controller/v2.5.4/docs/install/iam_policy.json 
 
---> curl -O https://raw.githubusercontent.com/kubernetes-sigs/aws-load-balancer-controller/v2.5.4/docs/install/iam_policy.json 
-
-after that Create IAM Policy and Create IAM Role and Deploy ALB controller --> 
-
+After that Create IAM Policy and Create IAM Role and Deploy ALB controller --> 
 How to setup alb add on
-Download IAM policy
 
+Download IAM policy
 curl -O https://raw.githubusercontent.com/kubernetes-sigs/aws-load-balancer-controller/v2.5.4/docs/install/iam_policy.json
-Create IAM Policy
+Create IAM Policy:-
 
 aws iam create-policy \
     --policy-name AWSLoadBalancerControllerIAMPolicy \
@@ -203,7 +202,7 @@ eksctl create iamserviceaccount \
   --attach-policy-arn=arn:aws:iam::<your-aws-account-id>:policy/AWSLoadBalancerControllerIAMPolicy \
   --approve
 Deploy ALB controller
-Add helm repo
+Add helm repo -> install helm --> sudo snap install helm --classic
 
 helm repo add eks https://aws.github.io/eks-charts
 Update the repo
@@ -221,12 +220,4 @@ helm install aws-load-balancer-controller eks/aws-load-balancer-controller \
 Verify that the deployments are running.
 
 kubectl get deployment -n kube-system aws-load-balancer-controller
-
-
-
-
-
-install helm --> sudo snap install helm --classic
-
-kubectl get deployment -n kube-system aws-load-balancer-controller
-
+ for reference youtube video -->   https://www.youtube.com/watch?v=RRCrY12VY_s
