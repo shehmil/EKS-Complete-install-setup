@@ -170,3 +170,20 @@ subjects:
 ### Generate token using service account in the namespace
 
 [Create Token](https://kubernetes.io/docs/reference/access-authn-authz/service-accounts-admin/#:~:text=To%20create%20a%20non%2Dexpiring,with%20that%20generated%20token%20data.)
+
+### extended version 
+
+aws eks update-kubeconfig --name my-eks23 --region ap-south-1
+create namespace game-2048
+Deploy the deployment, service and Ingress --> kubectl apply -f https://raw.githubusercontent.com/kubernetes-sigs/aws-load-balancer-controller/v2.5.4/docs/examples/2048/2048_full.yaml
+now ALB controller requirde -> for configure-oidc-connectorrequirde (if kubernetcluster need to connect service like LB oidc requirde same like iam adding ec2)
+   ->    eksctl utils associate-iam-oidc-provider --cluster $cluster_name --approve
+setup alb add on policy (alb controller need to talk with loadbalancer.)
+
+--> curl -O https://raw.githubusercontent.com/kubernetes-sigs/aws-load-balancer-controller/v2.5.4/docs/install/iam_policy.json 
+
+after that Create IAM Policy and Create IAM Role and Deploy ALB controller
+intsall helim --> sudo snap install helm --classic
+
+kubectl get deployment -n kube-system aws-load-balancer-controller
+
