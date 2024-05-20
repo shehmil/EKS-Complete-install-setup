@@ -172,7 +172,7 @@ subjects:
 [Create Token](https://kubernetes.io/docs/reference/access-authn-authz/service-accounts-admin/#:~:text=To%20create%20a%20non%2Dexpiring,with%20that%20generated%20token%20data.)
 
 ### extended version 
-
+  # create and connect ekscluster
 aws eks update-kubeconfig --name my-eks23 --region ap-south-1
 create namespace game-2048
 Deploy the deployment, service and Ingress --> kubectl apply -f https://raw.githubusercontent.com/kubernetes-sigs/aws-load-balancer-controller/v2.5.4/docs/examples/2048/2048_full.yaml
