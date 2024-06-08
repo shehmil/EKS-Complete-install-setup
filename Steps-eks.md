@@ -238,7 +238,7 @@ helm install aws-load-balancer-controller eks/aws-load-balancer-controller -n ku
   --set region=<region> \
   --set vpcId=<your-vpc-id>
 ```
-7) Verify that the deployments are running.
+7) Verify that the ingress controller are running or not .
 ```
 kubectl get deployment -n kube-system aws-load-balancer-controller
 ```
