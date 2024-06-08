@@ -185,11 +185,11 @@ kubectl apply -f https://raw.githubusercontent.com/kubernetes-sigs/aws-load-bala
 ```
 
 # To create ALB controller prerequisite  -> 
-configure-oidc-connectorrequirde (if kubernetcluster need to connect service like LB oidc requirde same like iam adding ec2)
+1) Configure-oidc-connectorrequirde (if kubernetcluster need to connect service like LB oidc requirde same like iam adding ec2)
 ```
 eksctl utils associate-iam-oidc-provider --cluster $cluster_name --approve
 ```  
-setup alb add on policy (alb controller need to talk with loadbalancer.)
+2) Create IAM policy (alb controller need to talk with loadbalancer.)
 ```
  curl -O https://raw.githubusercontent.com/kubernetes-sigs/aws-load-balancer-controller/v2.5.4/docs/install/iam_policy.json 
 ```
