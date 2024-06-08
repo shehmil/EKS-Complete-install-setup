@@ -184,7 +184,7 @@ Deploy the deployment, service and Ingress
 kubectl apply -f https://raw.githubusercontent.com/kubernetes-sigs/aws-load-balancer-controller/v2.5.4/docs/examples/2048/2048_full.yaml
 ```
 
-now ALB controller requirde -> for configure-oidc-connectorrequirde (if kubernetcluster need to connect service like LB oidc requirde same like iam adding ec2)
+For ALB controller requirde -> configure-oidc-connectorrequirde (if kubernetcluster need to connect service like LB oidc requirde same like iam adding ec2)
 ```    
 eksctl utils associate-iam-oidc-provider --cluster $cluster_name --approve
 ```  
