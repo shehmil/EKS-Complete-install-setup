@@ -193,18 +193,21 @@ eksctl utils associate-iam-oidc-provider --cluster $cluster_name --approve
 ```
  curl -O https://raw.githubusercontent.com/kubernetes-sigs/aws-load-balancer-controller/v2.5.4/docs/install/iam_policy.json 
 ```
-After that Create IAM Policy and Create IAM Role and Deploy ALB controller --> 
-How to setup alb add on
+After that Create IAM Policy and Create IAM Role and Deploy ALB controller 
+# How to setup alb add on
 
-Download IAM policy
+1) Download IAM policy
+```
 curl -O https://raw.githubusercontent.com/kubernetes-sigs/aws-load-balancer-controller/v2.5.4/docs/install/iam_policy.json
-Create IAM Policy:-
-
+```
+2) Create IAM Policy:-
+```
 aws iam create-policy \
     --policy-name AWSLoadBalancerControllerIAMPolicy \
     --policy-document file://iam_policy.json
-Create IAM Role
-
+```
+3) Create IAM Role
+```
 eksctl create iamserviceaccount \
   --cluster=<your-cluster-name> \
   --namespace=kube-system \
@@ -212,7 +215,8 @@ eksctl create iamserviceaccount \
   --role-name AmazonEKSLoadBalancerControllerRole \
   --attach-policy-arn=arn:aws:iam::<your-aws-account-id>:policy/AWSLoadBalancerControllerIAMPolicy \
   --approve
-Deploy ALB controller
+```
+4) Deploy ALB controller
 Add helm repo -> install helm --> sudo snap install helm --classic
 
 helm repo add eks https://aws.github.io/eks-charts
